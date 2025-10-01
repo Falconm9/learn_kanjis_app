@@ -76475,7 +76475,7 @@ $1(a){var s,r,q=null,p=this.a,o=p.e
 o===$&&A.a()
 s=a===B.b.ga0(o).b
 o=p.e
-r=s?"\xa1Correcto! La respuesta es "+B.b.ga0(o).b+". Significado: "+B.b.ga0(p.e).c+".":"Incorrecto, la respuesta correcta es "+B.b.ga0(o).b+"."
+r=s?"\xa1Correcto! La respuesta es "+B.b.ga0(o).b+". Significado: "+B.b.ga0(p.e).c+".":"Incorrecto, la respuesta correcta es "+B.b.ga0(o).b+". Significado: "+B.b.ga0(p.e).c+"."
 p.af(new A.adC(p,s))
 p=this.b.al(t.Pu).f
 o=A.d8(r,q,q,q,B.QA,q,q)
@@ -76582,7 +76582,7 @@ N(a){var s=null
 return new A.wy(B.Mz,A.os(B.a_,s,s),A.os(B.Z,s,s),B.yj,s)}}
 A.wc.prototype={
 ap(){var s=t.N
-return new A.Ns(A.c([A.as(["level","N5","totalKanjis","620"],s,s)],t.m1))}}
+return new A.Ns(A.c([A.as(["level","N5","totalKanjis","530"],s,s)],t.m1))}}
 A.Ns.prototype={
 N(a){var s,r,q,p=this,o=null,n=A.d8("\xbfQu\xe9 nivel quieres que probemos?",o,o,o,A.hb(o,o,o,o,o,o,o,o,o,o,o,20,o,o,o,o,o,!0,o,o,o,o,o,o,o,o),o,o),m=p.d,l=A.X(m).j("ab<1,c_>")
 l=A.a1(new A.ab(m,new A.adL(p),l),l.j("au.E"))
