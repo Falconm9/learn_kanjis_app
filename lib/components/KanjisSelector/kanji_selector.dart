@@ -23,6 +23,8 @@ class _KanjiSelectorState extends State<KanjiSelector> {
   bool enabledButtons = true;
   int correctAnswers = 0;
   int incorrectAnswers = 0;
+  String kanjiAnswer = '';
+  bool kanjiIsCorrect = false;
 
   @override
   void initState() {
@@ -36,6 +38,8 @@ class _KanjiSelectorState extends State<KanjiSelector> {
       widget.onKanjiSelected?.call(selectedKanji.kanji);
       setState(() {
         _currentIndex++;
+        kanjiAnswer = '';
+        kanjiIsCorrect = false;
       });
     }
   }
@@ -51,6 +55,26 @@ class _KanjiSelectorState extends State<KanjiSelector> {
       children: [
         Text('Progreso: $_currentIndex / ${widget.kanjis.length}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
         const SizedBox(height: 24),
+        Text('¿Cuál es la lectura del siguiente kanji?', style: const TextStyle(fontSize: 20),),
+        const SizedBox(height: 16),
+        if (kanjiAnswer.isNotEmpty)
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+            decoration: BoxDecoration(
+              color: kanjiIsCorrect ? Colors.green : Colors.red,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              kanjiAnswer,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        const SizedBox(height: 16),
         Text(
           _remainingKanjis.first.kanji,
           textAlign: TextAlign.center,
@@ -63,7 +87,7 @@ class _KanjiSelectorState extends State<KanjiSelector> {
           enabled: enabledButtons,
           onSelected: (selected) {
             final isCorrect = selected == _remainingKanjis.first.lectura;
-            final textToShow = isCorrect ? '¡Correcto! La respuesta es ${_remainingKanjis.first.lectura}. Significado: ${_remainingKanjis.first.significado}.' : 'Incorrecto, la respuesta correcta es ${_remainingKanjis.first.lectura}.';
+            final textToShow = isCorrect ? '¡Correcto! La respuesta es ${_remainingKanjis.first.lectura}. Significado: ${_remainingKanjis.first.significado}.' : 'Incorrecto, la respuesta correcta es ${_remainingKanjis.first.lectura}. Significado: ${_remainingKanjis.first.significado}.';
             setState(() {
               enabledButtons = false;
               if (isCorrect) {
@@ -71,14 +95,9 @@ class _KanjiSelectorState extends State<KanjiSelector> {
               } else {
                 incorrectAnswers++;
               }
+              kanjiAnswer = textToShow;
+              kanjiIsCorrect = isCorrect;
             });
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(textToShow, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),
-                duration: const Duration(seconds: 4),
-                backgroundColor: isCorrect ? Colors.green : Colors.red
-              ),
-            );
           },
         ),
         const SizedBox(height: 24),

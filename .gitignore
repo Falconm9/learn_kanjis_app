@@ -12,6 +12,9 @@
 .swiftpm/
 migrate_working_dir/
 
+# Worktree de gh-pages
+../gh-pages/
+
 # IntelliJ related
 *.iml
 *.ipr

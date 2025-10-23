@@ -15,7 +15,7 @@ class _KanjisPageState extends State<KanjisPage> {
     {'level': 'N2', 'totalKanjis': '3000'},
     {'level': 'N3', 'totalKanjis': '2000'},
     {'level': 'N4', 'totalKanjis': '1500'},*/
-    {'level': 'N5', 'totalKanjis': '620'},
+    {'level': 'N5', 'totalKanjis': '590'},
   ];
 
   String selectedLevel = '';
